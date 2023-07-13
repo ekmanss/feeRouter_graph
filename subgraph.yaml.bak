@@ -1,0 +1,27 @@
+specVersion: 0.0.4
+description: ERC20 for Ethereum
+repository: https://github.com/armatrix/bsc-subgraph
+schema:
+  file: ./schema.graphql
+dataSources:
+
+  - kind: ethereum
+    name: LpManager
+    network: zksync-era
+    source:
+      address: "0xa5D4263E56C17fe33c565f40f183C3F222206744"
+      abi: LPManager
+      startBlock: 7804768
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.5
+      language: wasm/assemblyscript
+      entities:
+        - AddLiquidity
+      abis:
+        - name: LPManager
+          file: ./abis/PlpManager.json
+      eventHandlers:
+        - event: AddLiquidity(address,address,uint256,uint256,uint256,uint256,uint256)
+          handler: handleAddLiquidity
+      file: ./src/pnk/PlpManager.ts

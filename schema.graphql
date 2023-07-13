@@ -1,0 +1,7 @@
+type FeeRouterDaily @entity {
+    id: ID!
+    duration: String!
+    durationId: String!
+    lastUpdateTimeStamp: BigInt!
+    plp: BigInt!
+}
